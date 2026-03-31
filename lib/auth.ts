@@ -4,6 +4,12 @@ import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "../db/schema";
 import { nextCookies } from "better-auth/next-js";
+import {
+  username,
+  admin,
+  organization,
+  lastLoginMethod,
+} from "better-auth/plugins";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -58,5 +64,11 @@ export const auth = betterAuth({
       enabled: true,
     },
   },
-  plugins: [nextCookies()],
+  plugins: [
+    nextCookies(),
+    username(),
+    admin(),
+    organization(),
+    lastLoginMethod(),
+  ],
 });

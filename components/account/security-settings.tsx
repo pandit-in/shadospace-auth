@@ -290,7 +290,7 @@ export function SecuritySettings() {
           <CardTitle>Session</CardTitle>
           <CardDescription>Manage your current active session.</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="grow">
           <div className="flex items-center justify-between gap-4">
             <div className="space-y-1">
               <p className="text-sm font-medium">Logout from this device</p>
@@ -299,37 +299,26 @@ export function SecuritySettings() {
               </p>
             </div>
           </div>
-        </CardContent>
-        <CardFooter>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleLogout}
-            disabled={loggingOut}
-          >
-            {loggingOut ? (
-              "Logging out..."
-            ) : (
-              <>
-                <SignOutIcon className="mr-2 h-4 w-4" />
-                Logout
-              </>
-            )}
-          </Button>
-        </CardFooter>
-        <CardFooter>
-          <div className="flex items-center justify-between gap-4">
-            <div className="space-y-1">
-              <p className="text-sm font-medium text-destructive">
-                Delete Account
-              </p>
-              <p className="text-xs text-muted-foreground">
-                This process is irreversible. Please be certain.
-              </p>
-            </div>
+          <div className="mt-6">
             <Button
               variant="destructive"
-              size="sm"
+              onClick={handleLogout}
+              disabled={loggingOut}
+            >
+              {loggingOut ? (
+                "Logging out..."
+              ) : (
+                <>
+                  <SignOutIcon className="mr-2 h-4 w-4" />
+                  Logout
+                </>
+              )}
+            </Button>
+          </div>
+        </CardContent>
+        <CardFooter>
+            <Button
+              variant="destructive"
               onClick={handleDeleteAccount}
               disabled={deleting}
             >
@@ -338,11 +327,10 @@ export function SecuritySettings() {
               ) : (
                 <>
                   <TrashIcon className="mr-2 h-4 w-4" />
-                  Delete
+                  Delete your account
                 </>
               )}
             </Button>
-          </div>
         </CardFooter>
       </Card>
     </div>

@@ -23,14 +23,15 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
-import { EyeClosedIcon, EyeIcon, GoogleLogoIcon } from "@phosphor-icons/react";
+import {FcGoogle} from "react-icons/fc"
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import LoadingButton from "../utils/loading-button";
 import { redirect, useRouter } from "next/navigation";
+import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
 const formSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z.email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters."),
 });
 
@@ -131,8 +132,9 @@ export default function SignInForm() {
                       placeholder="*******"
                       aria-invalid={fieldState.invalid}
                       autoComplete="current-password"
+                      className="relative"
                     />
-                    <InputGroupAddon align="inline-end">
+                    <InputGroupAddon className="absolute right-0">
                       <Button
                         type="button"
                         variant={"ghost"}
@@ -167,6 +169,7 @@ export default function SignInForm() {
           </div>
         </div>
         <Button
+        disabled={loading}
           onClick={() =>
             authClient.signIn.social({
               provider: "google",
@@ -176,7 +179,7 @@ export default function SignInForm() {
           variant={"outline"}
           className="w-full cursor-pointer"
         >
-          <GoogleLogoIcon className="size-4" /> Google
+          <FcGoogle className="size-4" /> Continue with google
         </Button>
       </CardFooter>
     </Card>

@@ -158,7 +158,7 @@ export default function SignUpForm() {
           <div className="flex items-center gap-4 mb-4">
             <Avatar className="h-18 w-18 rounded-none shrink-0">
               <AvatarImage
-                className="rounded-none object-cover"
+                className="object-cover"
                 src={form.watch("image") || ""}
               />
               <AvatarFallback className="text-lg">
@@ -264,8 +264,9 @@ export default function SignUpForm() {
                       placeholder="*******"
                       aria-invalid={fieldState.invalid}
                       autoComplete="new-password"
+                      className="relative"
                     />
-                    <InputGroupAddon align="inline-end">
+                    <InputGroupAddon className="absolute right-0">
                       <Button
                         type="button"
                         variant={"ghost"}
@@ -301,8 +302,9 @@ export default function SignUpForm() {
                       placeholder="*******"
                       aria-invalid={fieldState.invalid}
                       autoComplete="new-password"
+                      className="relative"
                     />
-                    <InputGroupAddon align="inline-end">
+                    <InputGroupAddon className="absolute right-0">
                       <Button
                         type="button"
                         variant={"ghost"}
@@ -323,7 +325,7 @@ export default function SignUpForm() {
         </form>
       </CardContent>
       <CardFooter>
-        <LoadingButton loading={loading} form="signup-form" className="w-full">
+        <LoadingButton loading={loading} form="signup-form" className="w-full cursor-pointer">
           Create Account
         </LoadingButton>
       </CardFooter>

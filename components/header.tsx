@@ -21,10 +21,10 @@ export default async function Header() {
             <UserButton />
           ) : (
             <div className="flex items-center gap-2">
-              <Button variant={"outline"} asChild>
+              <Button variant={"outline"}>
                 <Link href={"/sign-in"}>Sign In</Link>
               </Button>
-              <Button asChild>
+              <Button >
                 <Link href={"/sign-up"}>Get Started</Link>
               </Button>
             </div>

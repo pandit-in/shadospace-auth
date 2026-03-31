@@ -20,7 +20,7 @@ export default function UserButton() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger >
         {isPending ? (
           <Skeleton className="h-8 w-8 rounded-none animate-pulse" />
         ) : (

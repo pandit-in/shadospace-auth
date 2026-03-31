@@ -30,7 +30,8 @@ import { upload } from "@vercel/blob/client";
 import { CameraIcon, TrashIcon } from "@phosphor-icons/react";
 
 const profileSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
+  name: z.string().min(1, "Name must be at least 2 characters."),
+  username: z.string().min(1, "Name must be at least 2 characters."),
   image: z.url("Invalid image URL").optional().or(z.literal("")),
 });
 
@@ -45,6 +46,7 @@ export function ProfileSettings() {
     resolver: zodResolver(profileSchema),
     values: {
       name: session?.user?.name || "",
+      username: session?.user?.username || session?.user?.name || "",
       image: session?.user?.image || "",
     },
   });
@@ -100,6 +102,7 @@ export function ProfileSettings() {
       setLoading(true);
       const { error } = await authClient.updateUser({
         name: values.name,
+        username: values.username,
         image: values.image || undefined,
       });
 
@@ -136,10 +139,10 @@ export function ProfileSettings() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-2"
         >
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 mb-4">
             <Avatar className="h-20 w-20 shrink-0">
               <AvatarImage
-                className="rounded-none"
+                className="rounded-full"
                 src={form.watch("image") || session?.user?.image || ""}
               />
               <AvatarFallback className="text-xl">
@@ -212,20 +215,17 @@ export function ProfileSettings() {
               )}
             />
             <Controller
-              name="image"
+              name="username"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="profile-image">Avatar URL</FieldLabel>
+                  <FieldLabel htmlFor="profile-name">Username</FieldLabel>
                   <Input
                     {...field}
-                    id="profile-image"
-                    placeholder="https://example.com/avatar.jpg"
+                    id="profile-username"
+                    placeholder="@johndoe"
                     aria-invalid={fieldState.invalid}
                   />
-                  <p className="text-[10px] text-muted-foreground mt-1">
-                    You can also paste a direct image URL here.
-                  </p>
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
