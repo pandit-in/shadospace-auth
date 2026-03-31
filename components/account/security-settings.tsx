@@ -20,8 +20,6 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
 import { Button } from "@/components/ui/button";
 import {
   EyeClosedIcon,
@@ -33,6 +31,11 @@ import LoadingButton from "../utils/loading-button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SignOut, Trash } from "@phosphor-icons/react";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 
 const securitySchema = z
   .object({
@@ -54,6 +57,7 @@ export function SecuritySettings() {
   const [deleting, setDeleting] = React.useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = React.useState(false);
   const [showNewPassword, setShowNewPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
   const form = useForm<z.infer<typeof securitySchema>>({
     resolver: zodResolver(securitySchema),
@@ -174,7 +178,7 @@ export function SecuritySettings() {
                       </Link>
                     </FieldLabel>
                     <InputGroup>
-                      <Input
+                      <InputGroupInput
                         {...field}
                         id="current-password"
                         type={showCurrentPassword ? "text" : "password"}
@@ -187,14 +191,15 @@ export function SecuritySettings() {
                           type="button"
                           variant="ghost"
                           size="icon"
+                          className="h-7 w-7"
                           onClick={() =>
                             setShowCurrentPassword(!showCurrentPassword)
                           }
                         >
                           {showCurrentPassword ? (
-                            <EyeIcon />
+                            <EyeIcon size={16} />
                           ) : (
-                            <EyeClosedIcon />
+                            <EyeClosedIcon size={16} />
                           )}
                         </Button>
                       </InputGroupAddon>
@@ -212,22 +217,28 @@ export function SecuritySettings() {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="new-password">New Password</FieldLabel>
                     <InputGroup>
-                      <Input
+                      <InputGroupInput
                         {...field}
                         id="new-password"
                         type={showNewPassword ? "text" : "password"}
                         placeholder="*******"
                         aria-invalid={fieldState.invalid}
                         autoComplete="new-password"
+                        className="pr-10"
                       />
-                      <InputGroupAddon align="inline-end">
+                      <InputGroupAddon className="absolute right-0">
                         <Button
                           type="button"
                           variant="ghost"
                           size="icon"
+                          className="h-7 w-7"
                           onClick={() => setShowNewPassword(!showNewPassword)}
                         >
-                          {showNewPassword ? <EyeIcon /> : <EyeClosedIcon />}
+                          {showNewPassword ? (
+                            <EyeIcon size={16} />
+                          ) : (
+                            <EyeClosedIcon size={16} />
+                          )}
                         </Button>
                       </InputGroupAddon>
                     </InputGroup>
@@ -246,22 +257,30 @@ export function SecuritySettings() {
                       Confirm New Password
                     </FieldLabel>
                     <InputGroup>
-                      <Input
+                      <InputGroupInput
                         {...field}
                         id="confirm-password"
-                        type={showNewPassword ? "text" : "password"}
+                        type={showConfirmPassword ? "text" : "password"}
                         placeholder="*******"
                         aria-invalid={fieldState.invalid}
                         autoComplete="new-password"
+                        className="pr-10"
                       />
-                      <InputGroupAddon align="inline-end">
+                      <InputGroupAddon className="absolute right-0">
                         <Button
                           type="button"
                           variant="ghost"
                           size="icon"
-                          onClick={() => setShowNewPassword(!showNewPassword)}
+                          className="h-7 w-7"
+                          onClick={() =>
+                            setShowConfirmPassword(!showConfirmPassword)
+                          }
                         >
-                          {showNewPassword ? <EyeIcon /> : <EyeClosedIcon />}
+                          {showConfirmPassword ? (
+                            <EyeIcon size={16} />
+                          ) : (
+                            <EyeClosedIcon size={16} />
+                          )}
                         </Button>
                       </InputGroupAddon>
                     </InputGroup>
