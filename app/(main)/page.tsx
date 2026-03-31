@@ -23,7 +23,7 @@ export default function Home() {
             <Link href={"/sign-in"}>Get Started</Link>
           </Button>
           <Button variant={"outline"} asChild>
-            <Link href={"/sign-in"}>
+            <Link target="_blank" href={"https://github.com/pandit-in/shado-auth"}>
               <GithubLogoIcon className="size-4" /> Star on GitHub
             </Link>
           </Button>

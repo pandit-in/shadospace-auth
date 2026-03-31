@@ -153,7 +153,7 @@ export default function SignInForm() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-4">
-        <LoadingButton loading={loading} form="signin-form" className="w-full">
+        <LoadingButton loading={loading} form="signin-form" className="w-full cursor-pointer">
           Sign In
         </LoadingButton>
         <div className="relative w-full">
