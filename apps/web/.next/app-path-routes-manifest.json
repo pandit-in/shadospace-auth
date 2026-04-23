@@ -1,0 +1,13 @@
+{
+  "/(auth)/forgot-password/page": "/forgot-password",
+  "/(auth)/reset-password/page": "/reset-password",
+  "/(auth)/sign-in/page": "/sign-in",
+  "/(auth)/sign-up/page": "/sign-up",
+  "/(main)/account/page": "/account",
+  "/(main)/page": "/",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/[...all]/route": "/api/auth/[...all]",
+  "/api/avatar/upload/route": "/api/avatar/upload",
+  "/favicon.ico/route": "/favicon.ico"
+}

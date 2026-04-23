@@ -1,0 +1,29 @@
+{
+  "name": "@shadospace-auth/api",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./context": {
+      "default": "./src/context.ts"
+    },
+    "./routers": {
+      "default": "./src/routers/index.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {},
+  "devDependencies": {
+    "typescript": "catalog:",
+    "@shadospace-auth/config": "workspace:*",
+    "hono": "catalog:"
+  },
+  "dependencies": {
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@shadospace-auth/auth": "workspace:*",
+    "@shadospace-auth/db": "workspace:*",
+    "@trpc/server": "catalog:",
+    "@trpc/client": "catalog:"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "node": {
+    "00bdeec3be987aaa1575616bf881df1302247a1221": {
+      "workers": {
+        "app/(main)/page": {
+          "moduleId": 398774,
+          "async": false,
+          "exportedName": "getUsers",
+          "filename": "apps/web/app/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(main)/page": "action-browser"
+      },
+      "exportedName": "getUsers",
+      "filename": "apps/web/app/actions.ts"
+    }
+  },
+  "edge": {}
+}

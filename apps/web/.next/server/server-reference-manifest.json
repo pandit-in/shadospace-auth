@@ -1,0 +1,21 @@
+{
+  "node": {
+    "00bdeec3be987aaa1575616bf881df1302247a1221": {
+      "workers": {
+        "app/(main)/page": {
+          "moduleId": 398774,
+          "async": false,
+          "exportedName": "getUsers",
+          "filename": "apps/web/app/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(main)/page": "action-browser"
+      },
+      "filename": "apps/web/app/actions.ts",
+      "exportedName": "getUsers"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "H2aZEISbUzwyP2BYhdgR4Z1IE5pOjotYc0ZZQW3jF+U="
+}

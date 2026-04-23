@@ -52,10 +52,11 @@ It also installs required dependencies and updates scripts in the target `packag
 ## Local development
 
 ```bash
-npm install
-npm run build:cli
-node dist/cli/index.js init --path /path/to/next-app
+bun install
+bun run dev
 ```
+
+The Next.js app now lives in `apps/web`.
 
 ## Publish to npm
 
